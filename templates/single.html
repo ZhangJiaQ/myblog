@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header class="entry-header">
+								<h1 class="entry-title">{{ article.title }}</h1>
+								<div class="entry-meta">
+									<span class="post-category"><a href="#">{{ article.add_time }}</a></span>
+
+									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ article.add_time }}</time></a></span>
+
+									<span class="post-author"><a href="#">{{ article.author }}</a></span>
+
+									<span class="comments-link"><a href="#">0 评论</a></span>
+								</div>
+							</header>
+							<div class="entry-content clearfix">
+                                {{ article.content }}
+                            </div>
+						</article>
+					</main>
+					<aside class="col-md-4">
+                        <div class="widget widget-recent-posts">
+							<h3 class="widget-title">最近文章</h3>
+							<ul>
+                                {% for recent_post in recent_posts %}
+								<li>
+									<a href="{% url 'article' recent_post.id %}">{{ recent_post.title }}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="widget widget-archives">
+                            <h3 class="widget-title">方向</h3>
+							<ul>
+								<li>
+									<a href="#">工作</a>
+								</li>
+								<li>
+									<a href="#">生活</a>
+								</li>
+							</ul>
+						</div>
+
+
+						<div class="widget widget-category">
+							<h3 class="widget-title">文章类别</h3>
+							<ul>
+                                {% for category in categorys %}
+								<li>
+									<a href="#">{{ category.name }}</a>
+								</li>
+                                {% endfor %}
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+{% endblock %}

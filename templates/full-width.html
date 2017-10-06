@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-12">
+                        {% for article in articles %}
+						<article class="post post-1">
+							<header class="entry-header">
+								<h1 class="entry-title">
+									<a href="{% url 'article' article.id %}">{{ article.title }}</a>
+								</h1>
+								<div class="entry-meta">
+									<span class="post-category"><a href="#">{{ article.category }}</a></span>
+
+									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ article.add_time }}</time></a></span>
+
+									<span class="post-author"><a href="#">{{ article.author }}</a></span>
+
+									<span class="comments-link"><a href="">0 Comments</a></span>
+								</div>
+							</header>
+							<div class="entry-content clearfix">
+                                {{ article.content }}
+                                <div class="read-more cl-effect-14">
+									<a href="{% url 'article' article.id %}" class="more-link">Continue reading <span class="meta-nav">→</span></a>
+								</div>
+							</div>
+						</article>
+                        {% endfor %}
+					</main>
+				</div>
+			</div>
+		</div>
+{% endblock %}
